@@ -7,19 +7,27 @@ arr = raw_input().split(' ')
 for i in range(0, len(arr)):
     arr[i] = int(arr[i])
 
+
 count = 0
-res = list()
+
+
 for i in range(1, k+1):
     pos = 0
-    for j in range(0, n):
-        if arr[j] == 0:
-            pos = pos + i
-            if pos == n:
+    while pos <= n-1:
+        if arr[pos] == 0:
+            if pos == n-1:
                 count += 1
                 break
             else:
-                continue
-        elif arr[j] == 1:
-            pos += 1
+                pos = pos + i
 
-print(count)            
+
+        elif arr[pos] == 1:
+            pos = pos - i
+            if i + 1 <= k:
+                pos = pos + i + 1
+            if pos == n - 1:
+                count += 1
+                break
+
+print(count)
