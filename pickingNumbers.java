@@ -8,7 +8,7 @@ public class pickingNumbers{
   static int count(List<String> l){
     return l.size();
   }
-  static int result(List<Integer> l, int r){
+  static void result(List<Integer> l, int r){
     r = l.get(0) - r;
     for(int i =0; i < l.size()-1; i++){
       if(l.get(i+1) - l.get(i) > r){
@@ -17,10 +17,8 @@ public class pickingNumbers{
       else{
         continue;
       }
-      // System.out.println(r);
     }
     System.out.println(r);
-    return r;
   }
   public static void main(String args[]) throws IOException{
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,10 +34,10 @@ public class pickingNumbers{
     	a.add(strs[i]);
     }
     Collections.sort(a);
+    System.out.println(a);
     for(int i =0; i<count; i++){
       set.add(a.get(i));
       for(int j=i+1; j< count; j++){
-        // System.out.println("Last Element:" + Integer.parseInt(a.get(i)));
         if(Integer.parseInt(a.get(i)) - Integer.parseInt(a.get(j)) <= 1 && Integer.parseInt(a.get(i)) - Integer.parseInt(a.get(j)) >= -1){
           set.add(a.get(j));
         }
@@ -49,8 +47,6 @@ public class pickingNumbers{
       }
       int ct = count(set);
       f.add(ct);
-      // System.out.println(f);
-    // System.out.println(res);
     }
     result(f, res);
   }
